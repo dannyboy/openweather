@@ -16,7 +16,7 @@ class UI {
 
     this.location.textContent = weather.name;
     this.desc.textContent = weather.weather[0].main;
-    this.string.textContent += convertKelvinToCelsius(weather.main.temp);
+    this.string.innerHTML = `${convertKelvinToCelsius(weather.main.temp)}&#176;`;
     this.icon.setAttribute('src', `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
     this.humidity.textContent = `Relative Humidity: ${weather.main.humidity}`;
     this.sunrise.textContent = `Sunrise: ${ moment.unix(weather.sys.sunrise).format('h:mm a')}`;
@@ -54,18 +54,6 @@ class UI {
       default:
         this.body.style.backgroundColor = '#fff';
     }
-
-
-
-    //todo call this when location is changed
-    function convertKelvinToCelsius(kelvin) {
-      if (kelvin < (0)) {
-        return 'below absolute zero (0 K)';
-      } else {
-        return (kelvin-273.15).toFixed(1);
-      }
-    }  
-
 
   }
 }
